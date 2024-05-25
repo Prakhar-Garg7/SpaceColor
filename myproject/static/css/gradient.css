@@ -30,14 +30,14 @@ ul{
 ul li div {
                     height: 30px;
                     width: 30px;
+}
+.loop{
                     border-radius: 50%;
                     border: 2px solid white;
 }
 .radial{
                     height: 40px;
                     width: 40px;
-                    border-radius: 50%;
-                    border: 2px solid white; 
                     margin: 10px auto;
 }
 .enter{

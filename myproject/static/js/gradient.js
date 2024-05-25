@@ -9,6 +9,7 @@ var direc = 0 ;
 var radialBool = false ;
 const pattern = /^#[0-9A-Fa-f]{6}$/;
 var code = document.getElementsByClassName('code')[0] ;
+var currDirec = 0 ;
 
 function changeColor () {
 
@@ -34,17 +35,31 @@ function changeColor () {
 
 btn.addEventListener('click', changeColor) ;
 
+var dirArray = Array.from(dirElements);
+dirArray[0].classList.add('loop') ;
+
 radial.addEventListener('click', (event) => {
                           
                     radialBool = true ;
-}) ;
+                    dirArray.forEach((ele, idx) => {
+                                        if ( ele.classList.contains('loop') ) {
 
-var dirArray = Array.from(dirElements);
+                                                            ele.classList.remove('loop') ;    
+                                        }
+                    });
+                    radial.classList.add('loop') ;
+}) ;
 
 dirArray.forEach((ele, idx) => {
                     ele.addEventListener('click', (event) => {
                                         direc = idx * 45 ;
-                                        console.log("dir clicked" + idx) ;
-                                        console.log(direc) ;
+                                        dirArray[idx].classList.add('loop') ;
+                                        if(radialBool) {
+                                                            radialBool = false ;
+                                                            radial.classList.remove('loop') ;
+                                        }
+                                        console.log(currDirec) ;
+                                        dirElements[currDirec].classList.remove('loop') ;
+                                        currDirec = idx ;
                     });
 });
