@@ -1,39 +1,40 @@
 *{
-                    padding: 5px 0;
+                    padding: 0;
                     margin: 0;
                     box-sizing: border-box;
 }
 .cont{
                     width: 100%;
-                    min-height: 100vh;
-                    border: 2px solid blue;
-                    background-color: #34dbeb;
+                    height: 100vh;
+                    padding: 7px 0;
+                    background: linear-gradient(#e66465, #9198e5);
 }
-ul{
+.cont ul{
                     display: flex;
                     width: 100%;
                     height: 35px;
-                    border: 2px solid blue;
                     justify-content: space-around;
                     padding: 0 10%;
                     margin: 0;
                     list-style-type: none;
                     gap: 2px;
 }
-li{
+.cont ul li{
                     color: white;
                     size: 14px;
 }
-.hero{
+.cont .hero{
                     width: 100%;
                     padding: 50px;
                     text-align: center;
                     font-weight: bolder;
 }
-input{
+.cont input{
                     display: block;
                     margin: 70px auto 30px;
                     color: yellow;
+                    font-size: 25px;
+                    text-align: center;
                     background-color: grey;
                     border: none;
                     width: 180px;
@@ -43,11 +44,12 @@ input{
 -moz-box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 }
-button{
+.cont button{
                     display: block;
                     margin: 0 auto ;
                     color: yellow;
                     background-color: blue;
+                    font-size: 18px;
                     border: none;
                     width: 180px;
                     height: 45px;
@@ -55,4 +57,100 @@ button{
                     -webkit-box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 -moz-box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
+}
+.generic{
+                    width: 100%;
+                    padding: 10vh 12vw;
+}
+.generic .hero{
+                    height: 40vh;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0;
+}
+.generic .hero h1 {
+                    margin: 0 0 17px;
+}
+.generic .hero .hero1 {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+}
+.generic .hero .hero1 .box {
+                    width: calc(100% / 6);
+                    height: auto;
+                    aspect-ratio: 1 / 1.3;
+                    padding: 5px;
+}
+.generic .hero .hero1 .box .box1 {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
+                    background-color: yellow;
+                    border-radius: 10px;
+                    margin: 0 0 3px;
+}
+.matching{
+                    width: 100%;
+                    padding: 10vh 12vw;
+}
+.matching .hero{
+                    height: 40vh;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0;
+}
+.matching .hero h1 {
+                    margin: 0 0 17px;
+}
+.matching .hero .hero1 {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+}
+.matching .hero .hero1 .box {
+                    width: calc(100% / 6);
+                    height: auto;
+                    aspect-ratio: 1 / 1.3;
+                    border-radius: 10px;
+                    padding: 5px;
+}
+.matching .hero .hero1 .box .box1 {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
+                    background-color: yellow;
+                    margin: 0 0 3px;
+}
+.spot{
+                    width: 100%;
+                    padding: 10vh 12vw;
+}
+.spot .hero{
+                    height: 40vh;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0;
+}
+.spot .hero h1 {
+                    margin: 0 0 17px;
+}
+.spot .hero .hero1 {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+}
+.spot .hero .hero1 .box {
+                    width: calc(100% / 6);
+                    height: auto;
+                    aspect-ratio: 1 / 1.3;
+                    border-radius: 10px;
+                    padding: 5px;
+}
+.spot .hero .hero1 .box .box1 {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
+                    background-color: yellow;
+                    margin: 0 0 3px;
 }
