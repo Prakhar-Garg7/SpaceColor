@@ -4,13 +4,47 @@ var secInp = inputElements[1];
 var btn = document.getElementsByTagName('button')[0];
 var dirElements = document.getElementsByTagName('li');
 var cont = document.getElementsByClassName('cont')[0] ;
+var radial = document.getElementsByClassName('radial')[0] ;
+var direc = 0 ;
+var radialBool = false ;
+const pattern = /^#[0-9A-Fa-f]{6}$/;
+var code = document.getElementsByClassName('code')[0] ;
 
 function changeColor () {
 
                     let col1 = firstInp.value ;
                     let col2 = secInp.value ;
-                    console.log(col1, col2) ;
-                    cont.style.background = 'linear-gradient(45deg, ' + col1 + ', ' + col2 + ')';
+
+                    if ( ! ( pattern.test(col1) && pattern.test(col2) ) ) {
+
+                                        alert("Enter correct hexadecimal code");
+                                        return ;
+                    }
+                    firstInp.style.backgroundColor = col1 ;
+                    secInp.style.backgroundColor = col2 ;
+
+                    if ( radialBool ) {
+                                        cont.style.background = 'radial-gradient( circle,' + col1 + ', ' + col2 + ')';
+                                        code.textContent = 'background: radial-gradient( circle,' + col1 + ', ' + col2 + ')';
+                    }else {
+                                        cont.style.background = 'linear-gradient(' + direc + 'deg, ' + col1 + ', ' + col2 + ')';
+                                        code.textContent = 'background: linear-gradient(' + direc + 'deg, ' + col1 + ', ' + col2 + ')';
+                    }
 }
 
 btn.addEventListener('click', changeColor) ;
+
+radial.addEventListener('click', (event) => {
+                          
+                    radialBool = true ;
+}) ;
+
+var dirArray = Array.from(dirElements);
+
+dirArray.forEach((ele, idx) => {
+                    ele.addEventListener('click', (event) => {
+                                        direc = idx * 45 ;
+                                        console.log("dir clicked" + idx) ;
+                                        console.log(direc) ;
+                    });
+});
