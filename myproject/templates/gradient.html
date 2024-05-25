@@ -9,18 +9,22 @@
 </head>
 <body>
                     <div class="cont">
-                                        <h1 style="color: white; font-size: 40px;">Generate a CSS Color Gradient</h1>
-                                        <h3 style="color: white; font-size: 23px;">Choose orientation</h3>
+                                        <h1>Generate a CSS Color Gradient</h1>
+                                        <h3>Choose orientation</h3>
                                         <ul>
-                                                            <li><div><video src="{% static 'images/w.gif' %}"></video></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
-                                                            <li><div></div></li>
+                                                            <li><div><img src="{% static 'images/n.png' %}" alt="n"></div></li>
+                                                            <li><div><img src="{% static 'images/ne.png' %}" alt="ne"></div></li>
+                                                            <li><div><img src="{% static 'images/e.png' %}" alt="e"></div></li>
+                                                            <li><div><img src="{% static 'images/se.png' %}" alt="se"></div></li>
+                                                            <li><div><img src="{% static 'images/s.png' %}" alt="s"></div></li>
+                                                            <li><div><img src="{% static 'images/sw.png' %}" alt="sw"></div></li>
+                                                            <li><div><img src="{% static 'images/w.png' %}" alt="w"></div></li>
+                                                            <li><div><img src="{% static 'images/nw.png' %}" alt="nw"></div></li>
                                         </ul>
+                                        <h3>Enter colors</h3>
+                                        <input type="text" value="#051937" />
+                                        <input type="text" value="#A8EB12" />
+                                        <button type="button">GENERATE</button>
                     </div>
                     <script src="{% static 'js/gradient.js' %}"></script>
 </body>
