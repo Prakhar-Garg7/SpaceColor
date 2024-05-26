@@ -1,6 +1,9 @@
-var inputElements = document.getElementsByTagName('input');
+var inputElements = document.getElementsByClassName('cnamInp');
 var firstInp = inputElements[0];
 var secInp = inputElements[1];
+var inputColorElements = document.getElementsByClassName('colInp');
+var firstColorInp = inputColorElements[0];
+var secColorInp = inputColorElements[1];
 var btn = document.getElementsByTagName('button')[0];
 var dirElements = document.getElementsByTagName('li');
 var cont = document.getElementsByClassName('cont')[0] ;
@@ -8,8 +11,32 @@ var radial = document.getElementsByClassName('radial')[0] ;
 var direc = 0 ;
 var radialBool = false ;
 const pattern = /^#[0-9A-Fa-f]{6}$/;
+const patternLight = /^#[0-9]{6}$/;
+const patternDark = /^#[0-9A-Fa-f]{6}$/;
 var code = document.getElementsByClassName('code')[0] ;
 var currDirec = 0 ;
+
+function isLight(hexCode) {
+                                        // Convert hex to RGB
+                                        const r = parseInt(hexCode.substring(1, 3), 16) / 255;
+                                        const g = parseInt(hexCode.substring(3, 5), 16) / 255;
+                                        const b = parseInt(hexCode.substring(5, 7), 16) / 255;
+                                    
+                                        // Calculate luminance
+                                        const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                                    
+                                        // Compare to threshold (adjust threshold to fit your definition of light/dark)
+                                        const threshold = 0.5;
+                                        return luminance > threshold;
+}
+
+firstColorInp.addEventListener('input', () => {
+                                        firstInp.value = firstColorInp.value;
+});
+
+secColorInp.addEventListener('input', () => {
+                                        secInp.value = secColorInp.value;
+});
 
 function changeColor () {
 
@@ -21,8 +48,21 @@ function changeColor () {
                                         alert("Enter correct hexadecimal code");
                                         return ;
                     }
+
+                    if (isLight(col1)) firstInp.style.color = "black" ;
+                    if (isLight(col2)) secInp.style.color = "black" ;
+
+                    firstColorInp.value = col1 ;
+                    secColorInp.value = col2 ;
+
                     firstInp.style.backgroundColor = col1 ;
                     secInp.style.backgroundColor = col2 ;
+
+                    btn.classList.add('changeSizeClass') ;
+
+                    setTimeout(function() {
+                                        btn.classList.remove('changeSizeClass');
+                                        }, 1000);
 
                     if ( radialBool ) {
                                         cont.style.background = 'radial-gradient( circle,' + col1 + ', ' + col2 + ')';

@@ -75,6 +75,15 @@ box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 -moz-box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 box-shadow: 11px 10px 28px -3px rgba(120,120,120,1);
 }
+.changeSizeClass {
+                                        animation: changeSize 1s ease-in-out;
+}
+@keyframes changeSize {
+                                        50%{
+                                                                                transform: scale(1.05);
+                                                                                opacity: 0.5;
+                                        }
+}
 .code{
                     width: 40vw;
                     height: 100px;
