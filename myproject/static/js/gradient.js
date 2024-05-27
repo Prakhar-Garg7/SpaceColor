@@ -15,6 +15,7 @@ const patternLight = /^#[0-9]{6}$/;
 const patternDark = /^#[0-9A-Fa-f]{6}$/;
 var code = document.getElementsByClassName('code')[0] ;
 var codeHeading = document.getElementsByClassName('CSSCodeHeadingHidden')[0] ;
+var upscroll = document.getElementsByClassName('upscroll')[0] ;
 var currDirec = 0 ;
 
 function isLight(hexCode) {
@@ -75,14 +76,22 @@ function changeColor () {
 
                     if ( radialBool ) {
                                         cont.style.background = 'radial-gradient( circle,' + col1 + ', ' + col2 + ')';
-                                        code.textContent = 'background: radial-gradient( circle,' + col1 + ', ' + col2 + ')';
+                                        code.textContent = 'background: radial-gradient( circle,' + col1 + ', ' + col2 + ') ;';
                     }else {
                                         cont.style.background = 'linear-gradient(' + direc + 'deg, ' + col1 + ', ' + col2 + ')';
-                                        code.textContent = 'background: linear-gradient(' + direc + 'deg, ' + col1 + ', ' + col2 + ')';
+                                        code.textContent = 'background: linear-gradient(' + direc + 'deg, ' + col1 + ', ' + col2 + ') ;';
                     }
 }
 
 btn.addEventListener('click', changeColor) ;
+
+upscroll.addEventListener('click', (e) => {
+                                        
+                                        window.scrollTo({
+                                                                                top: 0,
+                                                                                behavior: 'smooth'
+                                                                                });                  
+}) ;
 
 var dirArray = Array.from(dirElements);
 dirArray[0].classList.add('loop') ;
