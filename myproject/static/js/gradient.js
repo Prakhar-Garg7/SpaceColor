@@ -53,6 +53,11 @@ function changeColor () {
                     codeHeading.classList.remove('CSSCodeHeadingHidden');
                     code.style.display = 'block' ;
 
+                    window.scrollTo({
+                                        top: document.body.scrollHeight,
+                                        behavior: 'smooth'
+                                        });
+
                     if (isLight(col1)) firstInp.style.color = "black" ;
                     if (isLight(col2)) secInp.style.color = "black" ;
 
