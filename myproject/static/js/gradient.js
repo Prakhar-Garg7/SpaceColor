@@ -14,6 +14,7 @@ const pattern = /^#[0-9A-Fa-f]{6}$/;
 const patternLight = /^#[0-9]{6}$/;
 const patternDark = /^#[0-9A-Fa-f]{6}$/;
 var code = document.getElementsByClassName('code')[0] ;
+var codeHeading = document.getElementsByClassName('CSSCodeHeadingHidden')[0] ;
 var currDirec = 0 ;
 
 function isLight(hexCode) {
@@ -48,6 +49,9 @@ function changeColor () {
                                         alert("Enter correct hexadecimal code");
                                         return ;
                     }
+
+                    codeHeading.classList.remove('CSSCodeHeadingHidden');
+                    code.style.display = 'block' ;
 
                     if (isLight(col1)) firstInp.style.color = "black" ;
                     if (isLight(col2)) secInp.style.color = "black" ;
