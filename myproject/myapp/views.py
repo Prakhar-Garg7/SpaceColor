@@ -7,3 +7,6 @@ def index ( request ) :
 
 def gradient ( request ) :
                                return render( request, 'gradient.html' )       
+
+def register ( request ) :
+                               return render( request, 'register.html' )  

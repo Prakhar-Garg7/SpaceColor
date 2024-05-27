@@ -22,3 +22,15 @@ class Combination ( models.Model ) :
                                             validators=[MinValueValidator(0), MaxValueValidator(360)],
                                             help_text='Enter an integer angle between 0 and 360 degrees.'
                                         )
+
+                                        def __str__(self) :
+                                            return self.first_col
+
+
+class UserAuthData(models.Model):
+    username = models.CharField(max_length=150, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.username
