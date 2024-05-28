@@ -4,7 +4,7 @@ var secInp = inputElements[1];
 var inputColorElements = document.getElementsByClassName('colInp');
 var firstColorInp = inputColorElements[0];
 var secColorInp = inputColorElements[1];
-var btn = document.getElementsByTagName('button')[0];
+var gene_btn = document.getElementById('gene_btn');
 var dirElements = document.getElementsByTagName('li');
 var cont = document.getElementsByClassName('cont')[0] ;
 var radial = document.getElementsByClassName('radial')[0] ;
@@ -20,6 +20,10 @@ var currDirec = 0 ;
 var fav_btn = document.getElementById('fav-btn') ;
 var col1;
 var col2 ;
+var usernameHead = document.getElementsByTagName('h2')[0] ;
+let login_btn = document.getElementById('login_btn') ;
+let register_btn = document.getElementById('register_btn') ;
+let fav_page_btn = document.getElementById('fav-page-btn') ;
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -74,10 +78,10 @@ function changeColor () {
                     firstInp.style.backgroundColor = col1 ;
                     secInp.style.backgroundColor = col2 ;
 
-                    btn.classList.add('changeSizeClass') ;
+                    gene_btn.classList.add('changeSizeClass') ;
 
                     setTimeout(function() {
-                                        btn.classList.remove('changeSizeClass');
+                                        gene_btn.classList.remove('changeSizeClass');
                                         }, 1000);
 
                     if ( radialBool ) {
@@ -89,7 +93,7 @@ function changeColor () {
                     }
 }
 
-btn.addEventListener('click', changeColor) ;
+gene_btn.addEventListener('click', changeColor) ;
 
 upscroll.addEventListener('click', (e) => {
                                         
@@ -128,32 +132,37 @@ dirArray.forEach((ele, idx) => {
                     });
 });
 
-fav_btn.addEventListener('click', (event) => {
-                                        let urlParams = new URLSearchParams(queryString);
-                                        if ( urlParams.get("registered") == "true" ) {
+$(document).ready(function() {
+                                        fav_btn.addEventListener('click', (event) => {
+                                                                    let col1 = firstInp.value ;            
+                                                                    let col2 = secInp.value ;            
+                                                                    let currDirec = direc ;
 
-                                                                                let queryParams = new URLSearchParams({
-                                                                                                                        col1: firstInp.value,
-                                                                                                                        col2: firstInp.value,
-                                                                                                                        currDirec: currDirec
-                                                                                }).toString();
-                                                                                window.location.href = `${addCombinationUrl}?${queryParams}` ;
-                                        }else {
-                                                                                window.location.href = loginUrl ;
-                                        }
+                                                                    let urlParams = new URLSearchParams(queryString);
+                                                                    if ( urlParams.get("registered") == "true" ) {
+                                                                        usernameHead.textContent = urlParams.get("username") ;
+                                                                        $.ajax({
+                                                                            url: addCombinationUrl,
+                                                                            data: {
+                                                                                'col1': col1,
+                                                                                'col2': col2,
+                                                                                'currDirec': currDirec,
+                                                                                'user_name': urlParams.get("username")
+                                                                            },
+                                                                            dataType: 'json',
+                                                                            success: function(data) {
+                                                                                console.log ( "Combination registered successfully" ) ;
+                                                                            },
+                                                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                                                console.log('An error occurred: ' + errorThrown);
+                                                                                console.log('Response text: ' + jqXHR.responseText);
+                                                                            }
+                                                                        });
+                                                                    }else {
+                                                                                                            window.location.href = loginUrl ;
+                                                                    }
+                                        })
 })
-
-// code.addEventListener('click', (event) => {
-
-//                                         code.select();
-//   code.setSelectionRange(0, 99999); // For mobile devices
-
-//    // Copy the text inside the text field
-//   navigator.clipboard.writeText(code.value);
-
-//   // Alert the copied text
-//   alert("Copied the text: " + code.value);
-// }) 
 
 code.addEventListener('click', (event) => {
                                         // Create a range to select the text content of the code element
@@ -173,4 +182,40 @@ code.addEventListener('click', (event) => {
                                     
                                         // Alert the user
                                         alert("Copied the text: " + code.textContent);
-                                    });
+});
+
+register_btn.addEventListener('click', (event) => {
+    window.location.href = registerUrl ;
+})
+
+login_btn.addEventListener('click', (event) => {
+    window.location.href = loginUrl ;
+})
+if ( urlParams.get("registered") == "true" ) {
+    usernameHead.textContent = urlParams.get("username") ;
+}
+
+fav_page_btn.addEventListener('click', (event) => {
+    
+    if ( urlParams.get("registered") == "true" ) {
+        $.ajax({
+            url: getFavCombUrl,
+            data: {
+                'username': urlParams.get("username")
+            },
+            dataType: 'json',
+            success: function(response) {
+                console.log ( response ) ;
+                var combinations = response.combinations;
+                window.location.href = favCombPageUrl + "?data=" + encodeURIComponent(JSON.stringify(combinations));
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('An error occurred: ' + errorThrown);
+                console.log('Response text: ' + jqXHR.responseText);
+            }
+        });
+    }else {
+                                            window.location.href = loginUrl ;
+    }
+})
+// [{"first_col":"#d9dfe8","sec_col":"#aa79e6","angle":0},{"first_col":"#123123","sec_col":"#ab1ab1","angle":180}]

@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Combination ( models.Model ) :
                                         comb_id = models.AutoField(primary_key=True)
+                                        my_name = models.CharField(max_length=20, default="ab",)
                                         hex_color_validator = RegexValidator(
                                             regex=r'^#[0-9A-Fa-f]{6}$',
                                             message='Enter a valid hex color code.'

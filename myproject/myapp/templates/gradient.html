@@ -6,21 +6,27 @@
                     {% load static %}
                     <link rel="stylesheet" href="{% static 'css/gradient.css' %}">
                     <script src="https://kit.fontawesome.com/3ea7d5175c.js" crossorigin="anonymous"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <title>Gradient page</title>
 </head>
 <body>
                     <div class="cont">
+                        <div class="navbar">
+                            <button id="login_btn">Login</button>
+                            <button id="register_btn">Register</button>
+                        </div>
                                         <h1>Generate a CSS Color Gradient</h1>
+                                        <h2 style="color: white;">Username</h2>
                                         <h3>Choose orientation</h3>
                                         <ul>
-                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 0deg;""></i></div></li>
-                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 45deg;""></i></div></li>
+                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6;"></i></div></li>
+                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 45deg;"></i></div></li>
                                                             <li><div><i class="fa-solid fa-arrow-up fa-rotate-90 fa-2xl" style="color: #eff4f6;"></i></div></li>
-                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 135deg;""></i></div></li>
+                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 135deg;"></i></div></li>
                                                             <li><div><i class="fa-solid fa-arrow-up fa-rotate-180 fa-2xl" style="color: #eff4f6;"></i></div></li>
-                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 225deg;""></i></div></li>
+                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 225deg;"></i></div></li>
                                                             <li><div><i class="fa-solid fa-arrow-up fa-rotate-270 fa-2xl" style="color: #eff4f6;"></i></div></li>
-                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 315deg;""></i></div></li>
+                                                            <li><div><i class="fa-solid fa-arrow-up fa-rotate-by fa-2xl" style="color: #eff4f6; --fa-rotate-angle: 315deg;"></i></div></li>
                                         </ul>
                                         <div class="radial"><i class="fa-solid fa-rotate-right fa-2xl" style="color: #f1f8f8;"></i></div>
                                         <h3>Enter colors</h3>
@@ -30,8 +36,9 @@
                                                             <input type="text" value="#A8EB12" class="cnamInp" />
                                                             <input type="color" value="#A8EB12" class="colInp" >
                                         </div>
-                                        <button type="button">GENERATE</button>
+                                        <button type="button" id="gene_btn">GENERATE</button>
                                         <button type="button" id="fav-btn">Add to favourites</button>
+                                        <button type="button" id="fav-page-btn">Go to favourite page</button>
                                         <h3 style="transform: translateX(-15%);" class="CSSCodeHeadingHidden">CSS Code :</h3>
                                         <div class="code">
 
@@ -42,7 +49,10 @@
                     </div>
                     <script>
                                             var loginUrl = "{% url 'login' %}";
+                                            var registerUrl = "{% url 'register' %}";
                                             var addCombinationUrl = "{% url 'addCombination' %}";
+                                            var getFavCombUrl = "{% url 'getFavComb' %}";
+                                            var favCombPageUrl = "{% url 'favCombPage' %}";
                                         </script>
                     <script src="{% static 'js/gradient.js' %}"></script>
 </body>

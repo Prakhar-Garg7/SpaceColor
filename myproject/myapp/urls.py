@@ -25,5 +25,8 @@ urlpatterns = [
     path('check_user/', views.check_user, name='check_user'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
-    path('addCombination/', views.addCombinationUrl, name='addCombination'),
+    path('addCombination/', views.addCombination, name='addCombination'),
+    path('addUser/', views.addUser, name='addUser'),
+    path('favCombPage/', views.favCombPage, name='favCombPage'),
+    path('getFavComb/', views.getFavComb, name='getFavComb'),
 ]
