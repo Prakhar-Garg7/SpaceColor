@@ -17,6 +17,12 @@ var code = document.getElementsByClassName('code')[0] ;
 var codeHeading = document.getElementsByClassName('CSSCodeHeadingHidden')[0] ;
 var upscroll = document.getElementsByClassName('upscroll')[0] ;
 var currDirec = 0 ;
+var fav_btn = document.getElementById('fav-btn') ;
+var col1;
+var col2 ;
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 
 function isLight(hexCode) {
                                         // Convert hex to RGB
@@ -42,8 +48,8 @@ secColorInp.addEventListener('input', () => {
 
 function changeColor () {
 
-                    let col1 = firstInp.value ;
-                    let col2 = secInp.value ;
+                    col1 = firstInp.value ;
+                    col2 = secInp.value ;
 
                     if ( ! ( pattern.test(col1) && pattern.test(col2) ) ) {
 
@@ -121,3 +127,18 @@ dirArray.forEach((ele, idx) => {
                                         currDirec = idx ;
                     });
 });
+
+fav_btn.addEventListener('click', (event) => {
+                                        let urlParams = new URLSearchParams(queryString);
+                                        if ( urlParams.get("registered") == "true" ) {
+
+                                                                                let queryParams = new URLSearchParams({
+                                                                                                                        col1: firstInp.value,
+                                                                                                                        col2: firstInp.value,
+                                                                                                                        currDirec: currDirec
+                                                                                }).toString();
+                                                                                window.location.href = `${addCombinationUrl}?${queryParams}` ;
+                                        }else {
+                                                                                window.location.href = loginUrl ;
+                                        }
+})

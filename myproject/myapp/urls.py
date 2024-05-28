@@ -20,6 +20,10 @@ from . import views
 
 urlpatterns = [
 #     path('admin/', admin.site.urls),
-    path('', views.register, name='register'),
+    path('', views.gradient, name='gradient'),
     path('gradient/', views.gradient, name='gradient'),
+    path('check_user/', views.check_user, name='check_user'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('addCombination/', views.addCombinationUrl, name='addCombination'),
 ]

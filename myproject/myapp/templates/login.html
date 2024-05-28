@@ -3,16 +3,29 @@
 <head>
                                         <meta charset="UTF-8">
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>Register</title>
+                                        {% load static %}
+                                        <title>Login</title>
+                                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-                                        <h1>Register</h1>
-                                        <form action="#" method="get">
+                                        <h1>Log In</h1>
+                                        <!-- <form action="#" method="get">
                                         <input type="text" name="username" placeholder="Username">
                                         <input type="text" name="email" placeholder="Email">
                                         <input type="text" name="password" placeholder="Password">
-                                        <input type="text" name="confirm_password" placeholder="Confirm Password">
-                                        <input type="submit" name="submit" value="Register">
-                                        </form>
+                                        <input  id="check-user-btn" type="submit" name="Login" value="Login">
+                                        </form> -->
+                                        <input type="text" name="username" placeholder="Username">
+                                        <input type="text" name="email" placeholder="Email">
+                                        <input type="text" name="password" placeholder="Password">
+                                        <button id="check-user-btn">Check if you are registered</button>
+                                        <a href="/register">New User ? Please Register</a>
+                                        <script type="text/javascript">
+                                            const checkUserUrl = '{% url "check_user" %}';
+                                            const gradientUrl = '{% url "gradient" %}';
+                                            const registerUrl = '{% url "register" %}';
+                                        </script>
+                                        <script src="{% static 'js/login.js' %}"></script>
+                                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

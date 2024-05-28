@@ -31,6 +31,7 @@
                                                             <input type="color" value="#A8EB12" class="colInp" >
                                         </div>
                                         <button type="button">GENERATE</button>
+                                        <button type="button" id="fav-btn">Add to favourites</button>
                                         <h3 style="transform: translateX(-15%);" class="CSSCodeHeadingHidden">CSS Code :</h3>
                                         <div class="code">
 
@@ -39,6 +40,10 @@
                                                                                 <i class="fa-solid fa-arrow-up fa-2xl" style="color: #e6f2f4;"></i>
                                         </div>
                     </div>
+                    <script>
+                                            var loginUrl = "{% url 'login' %}";
+                                            var addCombinationUrl = "{% url 'addCombination' %}";
+                                        </script>
                     <script src="{% static 'js/gradient.js' %}"></script>
 </body>
 </html>
