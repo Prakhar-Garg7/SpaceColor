@@ -142,3 +142,35 @@ fav_btn.addEventListener('click', (event) => {
                                                                                 window.location.href = loginUrl ;
                                         }
 })
+
+// code.addEventListener('click', (event) => {
+
+//                                         code.select();
+//   code.setSelectionRange(0, 99999); // For mobile devices
+
+//    // Copy the text inside the text field
+//   navigator.clipboard.writeText(code.value);
+
+//   // Alert the copied text
+//   alert("Copied the text: " + code.value);
+// }) 
+
+code.addEventListener('click', (event) => {
+                                        // Create a range to select the text content of the code element
+                                        const range = document.createRange();
+                                        range.selectNodeContents(code);
+                                    
+                                        // Create a selection object and add the range to it
+                                        const selection = window.getSelection();
+                                        selection.removeAllRanges();
+                                        selection.addRange(range);
+                                    
+                                        // Copy the selected text to the clipboard
+                                        document.execCommand('copy');
+                                    
+                                        // Clear the selection
+                                        selection.removeAllRanges();
+                                    
+                                        // Alert the user
+                                        alert("Copied the text: " + code.textContent);
+                                    });
