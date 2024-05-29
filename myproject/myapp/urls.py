@@ -29,4 +29,5 @@ urlpatterns = [
     path('addUser/', views.addUser, name='addUser'),
     path('favCombPage/', views.favCombPage, name='favCombPage'),
     path('getFavComb/', views.getFavComb, name='getFavComb'),
+    path('deleteItem/', views.deleteItem, name='deleteItem'),
 ]

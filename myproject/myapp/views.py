@@ -27,19 +27,18 @@ def check_user(request):
 
 def addCombination ( request ) :
     newComb = Combination(
-                                        first_col=request.GET.get('col1'),
-                                        sec_col=request.GET.get('col2'),
-                                        angle=request.GET.get('currDirec'),
-                                        my_name=request.GET.get('user_name')
+        first_col=request.GET.get('col1'),
+        sec_col=request.GET.get('col2'),
+        my_name=request.GET.get('user_name')
     )
     newComb.save()
     return JsonResponse({'message': 'Combination added successfully'})
 
 def addUser(request):
     newUser = UserAuthData(
-                                        username=request.GET.get('username'),
-                                        email=request.GET.get('email'),
-                                        password=request.GET.get('psw')
+        username=request.GET.get('username'),
+        email=request.GET.get('email'),
+        password=request.GET.get('psw')
     )
     newUser.save()
     return JsonResponse({'message': 'User added successfully'})
@@ -47,9 +46,16 @@ def addUser(request):
 def getFavComb(request):
     username = request.GET.get('username')
     combinations = Combination.objects.filter(my_name=username)
-    data = [{'first_col': combo.first_col, 'sec_col': combo.sec_col, 'angle': combo.angle} for combo in combinations]
+    data = [{'first_col': combo.first_col, 'sec_col': combo.sec_col, 'priority': combo.priority} for combo in combinations]
     return JsonResponse({'combinations': data})
 
 def favCombPage ( request ) :
     data = request.GET.get('data') 
-    return render ( request, 'favCombPage.html', {'data': data} )
+    username = request.GET.get('username')
+    return render ( request, 'favCombPage.html', {'data': data, 'username': username} )
+
+def deleteItem ( request ) :
+    index = request.GET.get('index')
+    username = request.GET.get('username')
+    Combination.objects.filter(my_name=username).filter(comb_id=index).delete()
+    return JsonResponse({'message': 'record deleted successfully'})

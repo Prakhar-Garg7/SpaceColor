@@ -136,7 +136,6 @@ $(document).ready(function() {
                                         fav_btn.addEventListener('click', (event) => {
                                                                     let col1 = firstInp.value ;            
                                                                     let col2 = secInp.value ;            
-                                                                    let currDirec = direc ;
 
                                                                     let urlParams = new URLSearchParams(queryString);
                                                                     if ( urlParams.get("registered") == "true" ) {
@@ -146,7 +145,6 @@ $(document).ready(function() {
                                                                             data: {
                                                                                 'col1': col1,
                                                                                 'col2': col2,
-                                                                                'currDirec': currDirec,
                                                                                 'user_name': urlParams.get("username")
                                                                             },
                                                                             dataType: 'json',
@@ -207,7 +205,7 @@ fav_page_btn.addEventListener('click', (event) => {
             success: function(response) {
                 console.log ( response ) ;
                 var combinations = response.combinations;
-                window.location.href = favCombPageUrl + "?data=" + encodeURIComponent(JSON.stringify(combinations));
+                window.location.href = favCombPageUrl + "?data=" + encodeURIComponent(JSON.stringify(combinations)) + "&username=" + urlParams.get("username");
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('An error occurred: ' + errorThrown);
